@@ -1,16 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Diagnose') {
-            steps {
-                sh 'java -version'
-                sh 'echo JAVA_HOME=$JAVA_HOME'
-                sh 'which java'
-                sh 'which javac'
-                sh 'javac -version'
-                sh 'mvn -version'
-            }
-        }
         stage('Checkout') {
             steps {
                 checkout scm
@@ -27,7 +17,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/test-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
