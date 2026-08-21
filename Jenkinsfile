@@ -6,6 +6,9 @@ pipeline {
                 sh 'java -version'
                 sh 'echo JAVA_HOME=$JAVA_HOME'
                 sh 'which java'
+                sh 'which javac'
+                sh 'javac -version'
+                sh 'mvn -version'
             }
         }
         stage('Checkout') {
